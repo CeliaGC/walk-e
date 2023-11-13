@@ -1,7 +1,8 @@
 #board{
-    height: 500px;
-    width: 500px;
+    height: 525px;
+    width: 525px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr fr1 1fr;
+    border: 1px solid black;
 }

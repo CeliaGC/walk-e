@@ -1,5 +1,5 @@
-#plain-cell{
-    height: 100px;
-    width: 100px;
-    border: 1px black solid;
+.plain-cell{
+    height: 105px;
+    width: 105px;
+    border: 2px black solid;
 }

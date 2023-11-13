@@ -4,30 +4,58 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [command, setCommand] = useState("")
+  const [x, setX]= useState(0)
+  const [y, setY]= useState(0)
+  const [optionToPlace]= useState("")
+
+  // const [message, setMessage] = useState('');
+
+  const handleChange = event => {
+    setCommand(event.target.value);
+
+    console.log('value is:', event.target.value);
+
+  // const executeComand =>{
+
+   }
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <div id='board'>
+      <div id=''></div>
+      <div id=''></div>
+      <div id=''></div>
+      <div id=''></div>
+      <div id=''></div>
+      <div id=''></div>
+      <div id=''></div>
+      <div id=''></div>
+      <div id=''></div>
+      <div id=''></div>
+      <div id=''></div>
+      <div id=''></div>
+      <div id=''></div>
+      <div id=''></div>
+      <div id=''></div>
+      <div id=''></div>
+      <div id=''></div>
+      <div id=''></div>
+      <div id=''></div>
+      <div id=''></div>
+      <div id='1'>1</div>
+      <div id='2'>2</div>
+      <div id='3'>3</div>
+      <div id='4'>4</div>
+      <div id='5'>5</div>
+  </div>
+  <textarea id="command" cols="30" rows="10"
+        name="command"
+        onChange={handleChange}
+        value={command}>
+          Type a command
+  </textarea>
+  <button>Go!</button>
     </>
   )
 }

@@ -5,7 +5,7 @@
   text-align: center;
 }
 
-.logo {
+/* .logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
@@ -39,4 +39,22 @@
 
 .read-the-docs {
   color: #888;
+} */
+#board div{
+  height: 100px;
+  width: 100px;
+  border: 1px black solid;
+}
+
+#board{
+  height: 500px;
+  width: 500px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr fr1 1fr;
+  
+}
+
+button{
+  border: 1px black solid;;
 }

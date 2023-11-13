@@ -6,18 +6,16 @@ import { useState } from "react";
 const Board = () => {
 
   const [cellClass, setCellClass] = useState("plain-cell");
-  console.log(cellClass)
+  
 
   const renderCells = () => (
-    Array.from({ length: 25 }, (_, index) => <Cell key={index} className={cellClass} text={"tadaaa"}/>)
+    Array.from({ length: 25 }, (_, index) => <Cell key={index} id={index + 1} className={cellClass} text={"tadaaa"}/>)
   );
     return(
         <>
           <div id='board'>
             
          {renderCells()}
-
-          
 
           </div>
         </>

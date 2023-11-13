@@ -58,3 +58,9 @@
 button{
   border: 1px black solid;;
 }
+
+.robot-north{
+  background-image: url(src/assets/images/walk-e.png);
+  background-size: cover;
+  background-position: 60%;
+}

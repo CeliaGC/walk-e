@@ -7,7 +7,7 @@ function App() {
   const [command, setCommand] = useState("")
   const [x, setX]= useState(0)
   const [y, setY]= useState(0)
-  const [optionToPlace]= useState("")
+  const [cellState, setCellState]= useState("")
 
   // const [message, setMessage] = useState('');
 
@@ -16,10 +16,11 @@ function App() {
 
     console.log('value is:', event.target.value);
 
-  // const executeComand =>{
-
    }
-
+    const executeCommand = () => {
+    setCellState(command)
+    };
+    
   return (
     <>
     <div id='board'>
@@ -43,7 +44,7 @@ function App() {
       <div id=''></div>
       <div id=''></div>
       <div id=''></div>
-      <div id='1'>1</div>
+      <div id='uno' className={cellState}>1</div>
       <div id='2'>2</div>
       <div id='3'>3</div>
       <div id='4'>4</div>
@@ -55,7 +56,7 @@ function App() {
         value={command}>
           Type a command
   </textarea>
-  <button>Go!</button>
+  <button onClick={executeCommand}>Go!</button>
     </>
   )
 }

@@ -7,11 +7,6 @@ const Board = () => {
 
   const [cellClass, setCellClass] = useState("plain-cell");
   const [command, setCommand] = useState("")
-  const handleChange = event => {
-    setCommand(event.target.value);
-
-    console.log('value is:', event.target.value);
-  }
 
   
 

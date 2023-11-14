@@ -9,10 +9,18 @@ import Cell from './components/cell/Cell'
 
 
 function App() {
+  
+  const [robotPosition, setRobotPosition] = useState({ x: 0, y: 0, facing: "NORTH" });
+
+  const handleCommandSubmit = (command) => {
+    // Lógica para interpretar y ejecutar el comando
+    console.log(`Executing command: ${command}`);
+    // Actualizar el estado del robot si es necesario
+  };
   return(
     <>
     <Board/>
-    <CommandForm />
+    <CommandForm onCommandSubmit={handleCommandSubmit} />
     
 
   </>

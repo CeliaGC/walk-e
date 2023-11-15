@@ -7,3 +7,7 @@
 .ROBOT-NORTH{
     background-color: blueviolet;
 }
+
+.PLACE_WALL{
+    background-color: blue;
+}

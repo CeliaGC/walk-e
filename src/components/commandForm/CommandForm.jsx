@@ -7,9 +7,7 @@ const CommandForm = ({ onCommandSubmit }) => {
     const [commandToExecute, setCommandToExecute] = useState("");
 
     const handleChange = event => {
-        setCommandToExecute(event.target.value);
-       
-        console.log('value is:', event.target.value);
+        setCommandToExecute(event.target.value.toUpperCase());
     
     }
 

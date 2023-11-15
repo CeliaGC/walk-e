@@ -1,9 +1,11 @@
 import "../cell/Cell.css"
 
 
-const Cell = ({id, className, text}) => {
+const Cell = ({id, className}) => {
+   
+
     return(
-        <div id={id} className={className}> <p>{text}</p></div>
+        <div id={id} className={className}></div>
     )
 }
 

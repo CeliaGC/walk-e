@@ -2,4 +2,8 @@
     height: 105px;
     width: 105px;
     border: 2px black solid;
+ 
+}
+.ROBOT-NORTH{
+    background-color: blueviolet;
 }

@@ -23,24 +23,28 @@ const Board = () => {
 
       newArray.forEach((cell) => {
         if (cell.id === cellId) {
-          cell.className = 'ROBOT-' + robotPosition.facing;
-        } else {
-          cell.className = 'plain-cell';
+          if(cellId === (5 - wallPosition.y) * 5 + wallPosition.x && wallPosition.x != 0){
+            cell.className = "PLACE_WALL"
+          }else if(cellId=== (5 - robotPosition.y) * 5 + robotPosition.x && cellId != (5 - wallPosition.y) * 5 + wallPosition.x){
+            cell.className = 'ROBOT-' + robotPosition.facing;
+          }else{
+            cell.className = 'PLACE_WALL'? cell.className=cell.className : cell.className="plain-cell";
+          } 
         }
       });
 
       return newArray;
     });
-  }, [robotPosition, cellId]);
+  }, [robotPosition, cellId, wallPosition]);
   // const locateCell = ()  => {
   //   let robotCell = (5 - parseInt(robotPosition.y)) * 5 + parseInt(robotPosition.x);
   //   setCellId(robotCell);
   // };
 
-  const locateWall = () => {
-    let wallCell = (5 - parseInt(wallPosition.y)) * 5 + parseInt(wallPosition.x);
-    setCellId(wallCell);
-  };
+  // const locateWall = () => {
+  //   let wallCell = (5 - parseInt(wallPosition.y)) * 5 + parseInt(wallPosition.x);
+  //   setCellId(wallCell);
+  // };
 
   const handleCommandSubmit = (command) => {
     const [action, params] = command.split(' ');
@@ -61,13 +65,13 @@ const Board = () => {
         y: parsedY,
         facing: String(facing),
       });
-
+      
       switch (action) {
         case 'PLACE_ROBOT':
           setCellId((5 - parsedY) * 5 + parsedX);
           break;
         case 'PLACE_WALL':
-          setWallPosition({ x: x, y: y });
+          setWallPosition({ x: parsedX, y: parsedY });
           setCellId((5 - parsedY) * 5 + parsedX);
           break;
         default:

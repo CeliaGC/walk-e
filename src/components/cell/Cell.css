@@ -5,8 +5,28 @@
  
 }
 .ROBOT-NORTH{
-    background-color: blueviolet;
+    background-image: url(../../assets/images/th.jpg);
+    background-size: cover;
+    transform: rotate(270deg);
 }
+
+.ROBOT-EAST{
+    background-image: url(../../assets/images/th.jpg);
+    background-size: cover;
+
+}
+.ROBOT-SOUTH{
+    background-image: url(../../assets/images/th.jpg);
+    background-size: cover;
+    transform: rotate(90deg);
+}
+
+.ROBOT-WEST{
+    background-image: url(../../assets/images/th.jpg);
+    background-size: cover;
+    transform: rotate(180deg);
+}
+
 
 .PLACE_WALL{
     background-color: blue;

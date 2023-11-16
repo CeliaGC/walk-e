@@ -47,7 +47,8 @@ const Board = () => {
 
     if (command === 'MOVE') {
       if (robotPosition.facing === 'NORTH') {
-        setRobotPosition({ x: robotPosition.x, y: parseInt(robotPosition.y) + 1, facing: robotPosition.facing });
+        setCellId((5 - robotPosition.y-1) * 5 + robotPosition.x);
+        setRobotPosition({x:robotPosition.x, y:robotPosition.y+1, facing:robotPosition.facing})
       }
     } else {
       const [y, x, facing] = params.split(',');

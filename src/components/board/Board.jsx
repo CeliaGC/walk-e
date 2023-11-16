@@ -23,9 +23,9 @@ const Board = () => {
 
       newArray.forEach((cell) => {
         if (cell.id === cellId) {
-          if(cellId === (5 - wallPosition.y) * 5 + wallPosition.x && wallPosition.x != 0){
+          if(cellId === (5 - wallPosition.y) * 5 + wallPosition.x && wallPosition.x != 0 && cell.className === "ROBOT-NORTH"){
             cell.className = "PLACE_WALL"
-          }else if(cellId=== (5 - robotPosition.y) * 5 + robotPosition.x && cellId != (5 - wallPosition.y) * 5 + wallPosition.x){
+          }else if(cellId=== (5 - robotPosition.y) * 5 + robotPosition.x && cellId != (5 - wallPosition.y) * 5 + wallPosition.x && cell.className==="PLACEWALL"){
             cell.className = 'ROBOT-' + robotPosition.facing;
           }else{
             cell.className = 'PLACE_WALL'? cell.className=cell.className : cell.className="plain-cell";

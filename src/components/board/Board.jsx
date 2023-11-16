@@ -23,9 +23,9 @@ const Board = () => {
 
       newArray.forEach((cell) => {
         if (cell.id === cellId) {
-          if(cellId === (5 - wallPosition.y) * 5 + wallPosition.x && wallPosition.x != 0 && cell.className === "ROBOT-NORTH"){
+          if(cellId === (5 - wallPosition.y) * 5 + wallPosition.x && wallPosition.x != 0 && cell.className === "plain-cell"){
             cell.className = "PLACE_WALL"
-          }else if(cellId=== (5 - robotPosition.y) * 5 + robotPosition.x && cellId != (5 - wallPosition.y) * 5 + wallPosition.x && cell.className==="PLACEWALL"){
+          }else if(cellId=== (5 - robotPosition.y) * 5 + robotPosition.x && cell.className !='PLACE_WALL'){
             cell.className = 'ROBOT-' + robotPosition.facing;
           }else{
             cell.className = 'PLACE_WALL'? cell.className=cell.className : cell.className="plain-cell";
@@ -49,10 +49,16 @@ const Board = () => {
   const handleCommandSubmit = (command) => {
     const [action, params] = command.split(' ');
 
-    if (command === 'MOVE') {
+    if (command === "MOVE") {
       if (robotPosition.facing === 'NORTH') {
         setCellId((5 - robotPosition.y-1) * 5 + robotPosition.x);
         setRobotPosition({x:robotPosition.x, y:robotPosition.y+1, facing:robotPosition.facing})
+      } else if(robotPosition.facing === 'EAST'){
+        setCellId((5 - robotPosition.y) * 5 + robotPosition.x+1);
+        setRobotPosition({x:robotPosition.x+1, y:robotPosition.y, facing:robotPosition.facing})        
+      }else if(robotPosition.facing === 'SOUTH'){
+        setCellId((5 - robotPosition.y+1) * 5 + robotPosition.x);
+        setRobotPosition({x:robotPosition.x, y:robotPosition.y-1, facing:robotPosition.facing})  
       }
     } else {
       const [y, x, facing] = params.split(',');
@@ -60,14 +66,15 @@ const Board = () => {
       const parsedX = Number(x);
       const parsedY = Number(y);
 
-      setRobotPosition({
-        x: parsedX,
-        y: parsedY,
-        facing: String(facing),
-      });
+      
       
       switch (action) {
         case 'PLACE_ROBOT':
+          setRobotPosition({
+        x: parsedX,
+        y: parsedY,
+        facing: String(facing),
+        });
           setCellId((5 - parsedY) * 5 + parsedX);
           break;
         case 'PLACE_WALL':

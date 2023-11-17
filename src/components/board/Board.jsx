@@ -40,15 +40,6 @@ const Board = () => {
       return newArray;
     });
   }, [robotPosition, cellId, wallPosition]);
-  // const locateCell = ()  => {
-  //   let robotCell = (5 - parseInt(robotPosition.y)) * 5 + parseInt(robotPosition.x);
-  //   setCellId(robotCell);
-  // };
-
-  // const locateWall = () => {
-  //   let wallCell = (5 - parseInt(wallPosition.y)) * 5 + parseInt(wallPosition.x);
-  //   setCellId(wallCell);
-  // };
 
   const handleCommandSubmit = (command) => {
     const [action, params] = command.split(' ');
@@ -86,15 +77,12 @@ const Board = () => {
           setCellId((5 - robotPosition.y) * 5 + robotPosition.x-1);
           setRobotPosition({x:robotPosition.x-1, y:robotPosition.y, facing:robotPosition.facing})            
         }
-
       }
     } else {
       const [y, x, facing] = params.split(',');
       const parsedX = Number(x);
       const parsedY = Number(y);
 
-      
-      
       switch (action) {
         case 'PLACE_ROBOT':
           setRobotPosition({

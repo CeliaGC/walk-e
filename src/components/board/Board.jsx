@@ -84,17 +84,24 @@ const Board = () => {
       const parsedY = Number(y);
       if(parsedX <= 5 && parsedY <= 5){
         switch (action) {
-        case 'PLACE_ROBOT' && facing === "NORTH" || "EAST" || "SOUTH" || "WEST":
-          setRobotPosition({
+        case 'PLACE_ROBOT':
+          if(facing === "NORTH" || facing==="EAST" || facing==="SOUTH" || facing==="WEST")
+          {
+            setRobotPosition({
         x: parsedX,
         y: parsedY,
         facing: String(facing),
         });
-          setCellId((5 - parsedY) * 5 + parsedX);
+          setCellId((5 - parsedY) * 5 + parsedX)
+          }
+          
           break;
-        case 'PLACE_WALL' && facing === null:
-          setWallPosition({ x: parsedX, y: parsedY });
+        case 'PLACE_WALL':
+          if(!facing){
+            setWallPosition({ x: parsedX, y: parsedY });
           setCellId((5 - parsedY) * 5 + parsedX);
+          }
+          
           break;
         default:
           console.log('Comando no reconocido');

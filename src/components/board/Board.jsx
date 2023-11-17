@@ -25,14 +25,15 @@ const Board = () => {
         if (cell.id === cellId) {
           if(cellId === (5 - wallPosition.y) * 5 + wallPosition.x && wallPosition.x != 0 && cell.className === "plain-cell"){
             cell.className = "PLACE_WALL"
+          }else if(cell.id != ((5 - wallPosition.y) * 5 + wallPosition.x) && cell.className === robotPosition.facing){
+            cell.className = cell.className
           }else if(cellId=== (5 - robotPosition.y) * 5 + robotPosition.x && cell.className !='PLACE_WALL'){
             cell.className = 'ROBOT-' + robotPosition.facing;
-          }else if(cell.className = 'PLACE_WALL'){
-            cell.className=cell.className
           }
-
+        } else if(cell.id === (5 - robotPosition.y) * 5 + robotPosition.x || cell.className === "PLACE_WALL"){
+          cell.className = cell.className
         } else{
-          cell.className != "PLACE_WALL"? cell.className = "plain-cell" : cell.className = cell.className
+          cell.className = 'plain-cell'
         }
       });
 
@@ -51,18 +52,26 @@ const Board = () => {
 
   const handleCommandSubmit = (command) => {
     const [action, params] = command.split(' ');
-
-    if (command === "MOVE") {
+    
+    if (command === "MOVE"){
+    const arrayOfWalls = arrayOfCells.filter((c) => c.className ==="PLACE_WALL");  
       if (robotPosition.facing === 'NORTH') {
-        setCellId((5 - robotPosition.y-1) * 5 + robotPosition.x);
-        setRobotPosition({x:robotPosition.x, y:robotPosition.y+1, facing:robotPosition.facing})
-        
+        let cellWithWallId = (5 - robotPosition.y-1) * 5 + robotPosition.x;
+        console.log(robotPosition.x, robotPosition.y)
+        let blockingCell = arrayOfWalls.find((w) => w.id == cellWithWallId);
+        if (!blockingCell){
+          setCellId((5 - robotPosition.y-1) * 5 + robotPosition.x);
+          setRobotPosition({x:robotPosition.x, y:robotPosition.y+1, facing:robotPosition.facing})
+        } 
       } else if(robotPosition.facing === 'EAST'){
         setCellId((5 - robotPosition.y) * 5 + robotPosition.x+1);
         setRobotPosition({x:robotPosition.x+1, y:robotPosition.y, facing:robotPosition.facing})        
       }else if(robotPosition.facing === 'SOUTH'){
         setCellId((5 - robotPosition.y+1) * 5 + robotPosition.x);
         setRobotPosition({x:robotPosition.x, y:robotPosition.y-1, facing:robotPosition.facing})  
+      }else if (robotPosition.facing === 'WEST'&& wallPosition.x != robotPosition.x-1 && wallPosition.y != robotPosition.y){
+        setCellId((5 - robotPosition.y) * 5 + robotPosition.x-1);
+        setRobotPosition({x:robotPosition.x-1, y:robotPosition.y, facing:robotPosition.facing})  
       }
     } else {
       const [y, x, facing] = params.split(',');

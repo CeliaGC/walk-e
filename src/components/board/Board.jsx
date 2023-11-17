@@ -27,9 +27,12 @@ const Board = () => {
             cell.className = "PLACE_WALL"
           }else if(cellId=== (5 - robotPosition.y) * 5 + robotPosition.x && cell.className !='PLACE_WALL'){
             cell.className = 'ROBOT-' + robotPosition.facing;
-          }else{
-            cell.className = 'PLACE_WALL'? cell.className=cell.className : cell.className="plain-cell";
-          } 
+          }else if(cell.className = 'PLACE_WALL'){
+            cell.className=cell.className
+          }
+
+        } else{
+          cell.className != "PLACE_WALL"? cell.className = "plain-cell" : cell.className = cell.className
         }
       });
 
@@ -53,6 +56,7 @@ const Board = () => {
       if (robotPosition.facing === 'NORTH') {
         setCellId((5 - robotPosition.y-1) * 5 + robotPosition.x);
         setRobotPosition({x:robotPosition.x, y:robotPosition.y+1, facing:robotPosition.facing})
+        
       } else if(robotPosition.facing === 'EAST'){
         setCellId((5 - robotPosition.y) * 5 + robotPosition.x+1);
         setRobotPosition({x:robotPosition.x+1, y:robotPosition.y, facing:robotPosition.facing})        

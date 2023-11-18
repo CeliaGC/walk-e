@@ -44,24 +44,46 @@ const Board = () => {
   const handleCommandSubmit = (command) => {
     const [action, params] = command.split(' ');
     
-    if (command === "MOVE"){
-    const arrayOfWalls = arrayOfCells.filter((c) => c.className ==="PLACE_WALL");  
-    
+    if (command === "MOVE" || command==="LEFT" || command === "RIGHT"){
+      
+    const arrayOfWalls = arrayOfCells.filter((c) => c.className ==="PLACE_WALL");
       if (robotPosition.facing === 'NORTH') {
+
+        switch (command){
+          case "MOVE":
+            
         let WallId = (5 - robotPosition.y-1) * 5 + robotPosition.x;
         let blockingCell = arrayOfWalls.find((w) => w.id == WallId);
         if (!blockingCell){
           setCellId((5 - robotPosition.y-1) * 5 + robotPosition.x);
           setRobotPosition({x:robotPosition.x, y:robotPosition.y+1, facing:robotPosition.facing})
         } 
+        break;
+        case "LEFT":
+          setRobotPosition({x:robotPosition.x, y:robotPosition.y, facing:"WEST"})
+        break;
+        case "RIGHT":
+          setRobotPosition({x:robotPosition.x, y:robotPosition.y, facing:"EAST"})
+        }
       } else if(robotPosition.facing === 'EAST'){
-        let WallId = (5 - robotPosition.y) * 5 + robotPosition.x+1;
-        let blockingCell = arrayOfWalls.find((w) => w.id == WallId);
-        if(!blockingCell){
-          setCellId((5 - robotPosition.y) * 5 + robotPosition.x+1);
-          setRobotPosition({x:robotPosition.x+1, y:robotPosition.y, facing:robotPosition.facing})  
-        } 
+        switch (command){
+          case "MOVE":
+          let WallId = (5 - robotPosition.y) * 5 + robotPosition.x+1;
+          let blockingCell = arrayOfWalls.find((w) => w.id == WallId);
+          if(!blockingCell){
+            setCellId((5 - robotPosition.y) * 5 + robotPosition.x+1);
+            setRobotPosition({x:robotPosition.x+1, y:robotPosition.y, facing:robotPosition.facing})  
+        }   
+        break;
+        case "LEFT":
+          setRobotPosition({x:robotPosition.x, y:robotPosition.y, facing:"NORTH"})
+        break;
+        case "RIGHT":
+          setRobotPosition({x:robotPosition.x, y:robotPosition.y, facing:"SOUTH"})
+        }
       }else if(robotPosition.facing === 'SOUTH'){
+        switch (command){
+          case "MOVE":
         let WallId = (5 - robotPosition.y+1) * 5 + robotPosition.x;
         let blockingCell = arrayOfWalls.find((w) => w.id == WallId);
         if(!blockingCell)
@@ -69,16 +91,46 @@ const Board = () => {
           setCellId((5 - robotPosition.y+1) * 5 + robotPosition.x);
           setRobotPosition({x:robotPosition.x, y:robotPosition.y-1, facing:robotPosition.facing})            
         }
-
-      }else if (robotPosition.facing === 'WEST'){
-        let WallId = (5 - robotPosition.y) * 5 + robotPosition.x-1;
-        let blockingCell = arrayOfWalls.find((w) => w.id == WallId);
-        if(!blockingCell){
-          setCellId((5 - robotPosition.y) * 5 + robotPosition.x-1);
-          setRobotPosition({x:robotPosition.x-1, y:robotPosition.y, facing:robotPosition.facing})            
+        break;
+        case "LEFT":
+          setRobotPosition({x:robotPosition.x, y:robotPosition.y, facing:"EAST"})
+        break;
+        case "RIGHT":
+          setRobotPosition({x:robotPosition.x, y:robotPosition.y, facing:"WEST"})
         }
+      }else if (robotPosition.facing === 'WEST'){
+
+
+
+
+
+
+
+
+        switch (command){
+          case "MOVE":
+            let WallId = (5 - robotPosition.y) * 5 + robotPosition.x-1;
+            let blockingCell = arrayOfWalls.find((w) => w.id == WallId);
+            if(!blockingCell){
+              setCellId((5 - robotPosition.y) * 5 + robotPosition.x-1);
+              setRobotPosition({x:robotPosition.x-1, y:robotPosition.y, facing:robotPosition.facing})            
+            }
+        break;
+        case "LEFT":
+          setRobotPosition({x:robotPosition.x, y:robotPosition.y, facing:"SOUTH"})
+        break;
+        case "RIGHT":
+          setRobotPosition({x:robotPosition.x, y:robotPosition.y, facing:"NORTH"})
+        }
+
+
+
+
+
+
+
       }
-    } else {
+    } else{
       const [y, x, facing] = params.split(',');
       const parsedX = Number(x);
       const parsedY = Number(y);

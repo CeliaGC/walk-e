@@ -60,9 +60,11 @@ const Board = () => {
         } 
         break;
         case "LEFT":
+          setCellId((5 - robotPosition.y) * 5 + robotPosition.x)
           setRobotPosition({x:robotPosition.x, y:robotPosition.y, facing:"WEST"})
         break;
         case "RIGHT":
+          setCellId((5 - robotPosition.y) * 5 + robotPosition.x)
           setRobotPosition({x:robotPosition.x, y:robotPosition.y, facing:"EAST"})
         }
       } else if(robotPosition.facing === 'EAST'){
@@ -76,9 +78,11 @@ const Board = () => {
         }   
         break;
         case "LEFT":
+          setCellId((5 - robotPosition.y) * 5 + robotPosition.x)
           setRobotPosition({x:robotPosition.x, y:robotPosition.y, facing:"NORTH"})
         break;
         case "RIGHT":
+          setCellId((5 - robotPosition.y) * 5 + robotPosition.x)
           setRobotPosition({x:robotPosition.x, y:robotPosition.y, facing:"SOUTH"})
         }
       }else if(robotPosition.facing === 'SOUTH'){
@@ -93,20 +97,14 @@ const Board = () => {
         }
         break;
         case "LEFT":
+          setCellId((5 - robotPosition.y) * 5 + robotPosition.x)
           setRobotPosition({x:robotPosition.x, y:robotPosition.y, facing:"EAST"})
         break;
         case "RIGHT":
+          setCellId((5 - robotPosition.y) * 5 + robotPosition.x)
           setRobotPosition({x:robotPosition.x, y:robotPosition.y, facing:"WEST"})
         }
       }else if (robotPosition.facing === 'WEST'){
-
-
-
-
-
-
-
-
         switch (command){
           case "MOVE":
             let WallId = (5 - robotPosition.y) * 5 + robotPosition.x-1;
@@ -117,18 +115,13 @@ const Board = () => {
             }
         break;
         case "LEFT":
+          setCellId((5 - robotPosition.y) * 5 + robotPosition.x)
           setRobotPosition({x:robotPosition.x, y:robotPosition.y, facing:"SOUTH"})
         break;
         case "RIGHT":
+          setCellId((5 - robotPosition.y) * 5 + robotPosition.x)
           setRobotPosition({x:robotPosition.x, y:robotPosition.y, facing:"NORTH"})
         }
-
-
-
-
-
-
-
       }
     } else{
       const [y, x, facing] = params.split(',');
@@ -151,7 +144,7 @@ const Board = () => {
         case 'PLACE_WALL':
           if(!facing){
             setWallPosition({ x: parsedX, y: parsedY });
-          setCellId((5 - parsedY) * 5 + parsedX);
+            setCellId((5 - parsedY) * 5 + parsedX);
           }
           
           break;

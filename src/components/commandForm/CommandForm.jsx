@@ -21,7 +21,7 @@ const CommandForm = ({ onCommandSubmit }) => {
           <textarea
             id="command"
             cols="30"
-            rows="10"
+            rows="5"
             name="command"
             onChange={handleChange}
             value={commandToExecute}

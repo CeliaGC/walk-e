@@ -51,13 +51,18 @@ const Board = () => {
 
         switch (command){
           case "MOVE":
-            
-        let WallId = (5 - robotPosition.y-1) * 5 + robotPosition.x;
-        let blockingCell = arrayOfWalls.find((w) => w.id == WallId);
-        if (!blockingCell){
+        
+        let nextCell = (5 - robotPosition.y-1) * 5 + robotPosition.x;
+        let blockingCell = arrayOfWalls.find((w) => w.id == nextCell);
+        let oppositeRowCell = (5 - robotPosition.y+4 * 5 + robotPosition.x);
+        let blockingORCell = arrayOfWalls.find((w)=>w.id === oppositeRowCell)
+        if (!blockingCell && robotPosition.y+1 <6){
           setCellId((5 - robotPosition.y-1) * 5 + robotPosition.x);
           setRobotPosition({x:robotPosition.x, y:robotPosition.y+1, facing:robotPosition.facing})
-        } 
+        }else if (!blockingORCell){
+          setCellId((5 - robotPosition.y+4) * 5 + robotPosition.x);
+          setRobotPosition({x:robotPosition.x, y:robotPosition.y-4, facing:robotPosition.facing})
+        }
         break;
         case "LEFT":
           setCellId((5 - robotPosition.y) * 5 + robotPosition.x)
@@ -72,10 +77,15 @@ const Board = () => {
           case "MOVE":
           let WallId = (5 - robotPosition.y) * 5 + robotPosition.x+1;
           let blockingCell = arrayOfWalls.find((w) => w.id == WallId);
-          if(!blockingCell){
+          let firstRowCell = (5 - robotPosition.y) * 5 + robotPosition.x-4;
+          let firstRCBlocked = arrayOfWalls.find((w) => w.id === firstRowCell);
+          if(!blockingCell && robotPosition.x +1 <= 5){
             setCellId((5 - robotPosition.y) * 5 + robotPosition.x+1);
             setRobotPosition({x:robotPosition.x+1, y:robotPosition.y, facing:robotPosition.facing})  
-        }   
+        }else if (!firstRCBlocked){
+          setCellId((5 - robotPosition.y) * 5 + robotPosition.x-4);
+          setRobotPosition({x:robotPosition.x-4, y:robotPosition.y, facing:robotPosition.facing})
+        }
         break;
         case "LEFT":
           setCellId((5 - robotPosition.y) * 5 + robotPosition.x)
@@ -90,10 +100,14 @@ const Board = () => {
           case "MOVE":
         let WallId = (5 - robotPosition.y+1) * 5 + robotPosition.x;
         let blockingCell = arrayOfWalls.find((w) => w.id == WallId);
-        if(!blockingCell)
-        {
+        let oppositeRowCell = (5 - robotPosition.y-4) * 5 + robotPosition.x;
+        let blockingORCell = arrayOfWalls.find((w)=>w.id === oppositeRowCell)
+        if(!blockingCell && robotPosition.y-1 >= 1){
           setCellId((5 - robotPosition.y+1) * 5 + robotPosition.x);
           setRobotPosition({x:robotPosition.x, y:robotPosition.y-1, facing:robotPosition.facing})            
+        } else if (!blockingORCell){
+          setCellId((5 - robotPosition.y-4) * 5 + robotPosition.x);
+          setRobotPosition({x:robotPosition.x, y:robotPosition.y+4, facing:robotPosition.facing})
         }
         break;
         case "LEFT":
@@ -109,9 +123,14 @@ const Board = () => {
           case "MOVE":
             let WallId = (5 - robotPosition.y) * 5 + robotPosition.x-1;
             let blockingCell = arrayOfWalls.find((w) => w.id == WallId);
-            if(!blockingCell){
+            let lastRowInCell = (5 - robotPosition.y) * 5 + robotPosition.x+4;
+            let lastRICBlocked = arrayOfWalls.find((w) => w.id === lastRowInCell);
+            if(!blockingCell && robotPosition.x-1 >=1){
               setCellId((5 - robotPosition.y) * 5 + robotPosition.x-1);
               setRobotPosition({x:robotPosition.x-1, y:robotPosition.y, facing:robotPosition.facing})            
+            }else if (!lastRICBlocked){
+              setCellId((5 - robotPosition.y) * 5 + robotPosition.x+4);
+              setRobotPosition({x:robotPosition.x+4, y:robotPosition.y, facing:robotPosition.facing})
             }
         break;
         case "LEFT":

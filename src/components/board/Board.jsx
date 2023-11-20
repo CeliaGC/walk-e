@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import CommandForm from "../commandForm/commandForm";
 import Cell from "../cell/Cell";
 import "../board/Board.css";
+import ReportModal from '../reportModal/ReportModal';
 
 const Board = () => {
 
@@ -9,6 +10,8 @@ const Board = () => {
   const [robotPosition, setRobotPosition] = useState({ x: 0, y: 0, facing: "" });
   const [wallPosition, setWallPosition] = useState({ x: 0, y: 0 });
   const [cellId, setCellId] = useState(0);
+  const [robotReport, setRobotReport] = useState("");
+  const [showModal, setShowModal] = useState(false);
   const [arrayOfCells, setArrayOfCells] = useState(
     Array.from({ length: 25 }, (_, index) => ({
       id: index + 1,
@@ -39,13 +42,18 @@ const Board = () => {
 
       return newArray;
     });
+
+    
   }, [robotPosition, cellId, wallPosition]);
 
   const handleCommandSubmit = (command) => {
     const [action, params] = command.split(' ');
     
-    if (command === "MOVE" || command==="LEFT" || command === "RIGHT"){
-      
+    if (command === "MOVE" || command==="LEFT" || command === "RIGHT" || command === "REPORT"){
+      if (command === "REPORT"){
+        robotPosition? setRobotReport(`${robotPosition.y},${robotPosition.x},${robotPosition.facing}`):console.log("No robot found");
+        setShowModal(true);
+      }else{
     const arrayOfWalls = arrayOfCells.filter((c) => c.className ==="PLACE_WALL");
       if (robotPosition.facing === 'NORTH') {
 
@@ -141,7 +149,9 @@ const Board = () => {
           setCellId((5 - robotPosition.y) * 5 + robotPosition.x)
           setRobotPosition({x:robotPosition.x, y:robotPosition.y, facing:"NORTH"})
         }
+      }        
       }
+
     } else{
       const [y, x, facing] = params.split(',');
       const parsedX = Number(x);
@@ -167,12 +177,17 @@ const Board = () => {
           }
           
           break;
+
         default:
           console.log('Comando no reconocido');
       }
       }
       
     }
+  };
+  const handleCloseModal = () => {
+    // Cierra el modal y resetea el estado
+    setShowModal(false);
   };
 
   const renderCells = () =>
@@ -185,6 +200,7 @@ const Board = () => {
       </div>
       {/* Pasa la función de actualización como prop a CommandForm */}
       <CommandForm onCommandSubmit={handleCommandSubmit} />
+      {showModal && <ReportModal onHide={handleCloseModal} text={robotReport} />}
     </>
   );
 };

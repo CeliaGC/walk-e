@@ -14,10 +14,6 @@ const ReportModal = ({ text, onHide }) => {
           <Button variant="secondary" onClick={onHide}>
             Close
           </Button>
-          {/* Modifica este botón para cerrar el modal */}
-          <Button variant="primary" onClick={onHide}>
-            Save Changes
-          </Button>
         </Modal.Footer>
       </Modal>
     </>

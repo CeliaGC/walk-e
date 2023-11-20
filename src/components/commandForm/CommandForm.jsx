@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Button from 'react-bootstrap/Button';
 
 // const CommandForm = ({command}) => {
 //     const [commandToExecute,setCommandToExecute]= useState("Test")
@@ -28,7 +29,7 @@ const CommandForm = ({ onCommandSubmit }) => {
           >
             Type a command
           </textarea>
-          <button onClick={executeCommand}>Go!</button>
+          <Button variant="secondary" onClick={executeCommand}>Go!</Button>
         </>
     )
 }

@@ -1,33 +1,42 @@
 .plain-cell{
     height: 105px;
     width: 105px;
-    border: 2px black solid;
+    border: 1px rgb(200, 214, 218) solid;
  
 }
 .ROBOT-NORTH{
-    background-image: url(../../assets/images/th.jpg);
-    background-size: cover;
-    transform: rotate(270deg);
+    background-image: url(../../assets/images/robot_north.png);
+    background-size: contain;
+    background-position:center;  
+    background-repeat: no-repeat;
 }
 
 .ROBOT-EAST{
-    background-image: url(../../assets/images/th.jpg);
-    background-size: cover;
+    background-image: url(../../assets/images/robot_east.png);
+    background-size: contain;
+    background-position:center;  
+    background-repeat: no-repeat;
 
 }
 .ROBOT-SOUTH{
-    background-image: url(../../assets/images/th.jpg);
+    background-image: url(../../assets/images/robot_south.png);
     background-size: cover;
-    transform: rotate(90deg);
+    background-position:center;  
+    background-repeat: no-repeat;
 }
 
 .ROBOT-WEST{
-    background-image: url(../../assets/images/th.jpg);
-    background-size: cover;
-    transform: rotate(180deg);
+    background-image: url(../../assets/images/robot_west.png);
+    background-size: contain;
+    background-position:center;  
+    background-repeat: no-repeat;
 }
 
 
 .PLACE_WALL{
-    background-color: blue;
+    background-image: url(../../assets/images/wall.png);
+    background-size:110%;
+    background-position: center;
+    transform:rotate(95deg);
+    background-repeat: no-repeat;
 }

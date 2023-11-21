@@ -1,7 +1,17 @@
 
 #root {
   max-width: 1280px;
-  margin: 0 auto;
+  width: 100vw;
+  margin: 0;
   padding: 2rem;
-  text-align: center;
+  display:flex;
+  flex-direction: row-reverse;
+  /* align-items: flex-end; */
+  justify-content: flex-start;
+  gap: 25%;
+  background-color: rgb(255, 255, 167);
+  background-image: url(./assets/images/texture.png);
+  background-size: 30%;
+ 
+  
 }

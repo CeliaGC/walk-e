@@ -67,7 +67,7 @@ const Board = () => {
         if (!blockingCell && robotPosition.y+1 <6){
           setCellId((5 - robotPosition.y-1) * 5 + robotPosition.x);
           setRobotPosition({x:robotPosition.x, y:robotPosition.y+1, facing:robotPosition.facing})
-        }else if (!blockingORCell){
+        }else if (!blockingORCell && !blockingCell){
           setCellId((5 - robotPosition.y+4) * 5 + robotPosition.x);
           setRobotPosition({x:robotPosition.x, y:robotPosition.y-4, facing:robotPosition.facing})
         }
@@ -90,7 +90,7 @@ const Board = () => {
           if(!blockingCell && robotPosition.x +1 <= 5){
             setCellId((5 - robotPosition.y) * 5 + robotPosition.x+1);
             setRobotPosition({x:robotPosition.x+1, y:robotPosition.y, facing:robotPosition.facing})  
-        }else if (!firstRCBlocked){
+        }else if (!firstRCBlocked && !blockingCell){
           setCellId((5 - robotPosition.y) * 5 + robotPosition.x-4);
           setRobotPosition({x:robotPosition.x-4, y:robotPosition.y, facing:robotPosition.facing})
         }
@@ -113,7 +113,7 @@ const Board = () => {
         if(!blockingCell && robotPosition.y-1 >= 1){
           setCellId((5 - robotPosition.y+1) * 5 + robotPosition.x);
           setRobotPosition({x:robotPosition.x, y:robotPosition.y-1, facing:robotPosition.facing})            
-        } else if (!blockingORCell){
+        } else if (!blockingORCell && !blockingCell){
           setCellId((5 - robotPosition.y-4) * 5 + robotPosition.x);
           setRobotPosition({x:robotPosition.x, y:robotPosition.y+4, facing:robotPosition.facing})
         }
@@ -136,7 +136,7 @@ const Board = () => {
             if(!blockingCell && robotPosition.x-1 >=1){
               setCellId((5 - robotPosition.y) * 5 + robotPosition.x-1);
               setRobotPosition({x:robotPosition.x-1, y:robotPosition.y, facing:robotPosition.facing})            
-            }else if (!lastRICBlocked){
+            }else if (!lastRICBlocked && !blockingCell){
               setCellId((5 - robotPosition.y) * 5 + robotPosition.x+4);
               setRobotPosition({x:robotPosition.x+4, y:robotPosition.y, facing:robotPosition.facing})
             }

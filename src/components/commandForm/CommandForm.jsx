@@ -3,11 +3,7 @@ import Button from 'react-bootstrap/Button';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { ButtonGroup } from "react-bootstrap";
-import '../commandForm/CommandForm.css'
-
-
-// const CommandForm = ({command}) => {
-//     const [commandToExecute,setCommandToExecute]= useState("Test")
+import '../commandForm/CommandForm.css';
 
 const CommandForm = ({ onCommandSubmit }) => {
     const [commandToExecute, setCommandToExecute] = useState("");
@@ -25,14 +21,13 @@ const CommandForm = ({ onCommandSubmit }) => {
       return (
         <>
         <div className="buttongroup-flex">
-         <ButtonGroup>
-         <DropdownButton title='PLACE'>
-          <Dropdown.Item >ROBOT</Dropdown.Item>
-          <Dropdown.Item >WALL</Dropdown.Item>
-        </DropdownButton>
 
-      <DropdownButton eventKey="ROBOT" variant="secondary" as={ButtonGroup} title="OPTIONS" id="bg-nested-dropdown">
-        <DropdownButton title='Column'>
+        <ButtonGroup>
+          <Button variant="info" className="button-border-color">ROBOT</Button>
+          <Button variant="info" className="button-border-color">WALL</Button>
+
+      <DropdownButton variant="info" className="button-border-color" eventKey="ROBOT"as={ButtonGroup} title="OPTIONS" id="bg-nested-dropdown">
+        <DropdownButton variant="warning" title='Column'>
           <Dropdown.Item >1</Dropdown.Item>
           <Dropdown.Item >2</Dropdown.Item>
           <Dropdown.Item >3</Dropdown.Item>
@@ -40,7 +35,7 @@ const CommandForm = ({ onCommandSubmit }) => {
           <Dropdown.Item >5</Dropdown.Item> 
         </DropdownButton>
 
-        <DropdownButton title='Row'>
+        <DropdownButton variant="warning" title='Row'>
           <Dropdown.Item >1</Dropdown.Item>
           <Dropdown.Item >2</Dropdown.Item>
           <Dropdown.Item >3</Dropdown.Item>
@@ -48,7 +43,7 @@ const CommandForm = ({ onCommandSubmit }) => {
           <Dropdown.Item >5</Dropdown.Item> 
         </DropdownButton>
 
-        <DropdownButton title='Facing'>
+        <DropdownButton variant="warning" title='Facing'>
           <Dropdown.Item >North</Dropdown.Item>
           <Dropdown.Item >East</Dropdown.Item>
           <Dropdown.Item >South</Dropdown.Item>
@@ -57,8 +52,8 @@ const CommandForm = ({ onCommandSubmit }) => {
         
       </DropdownButton>
 
-      <DropdownButton eventKey="ROBOT" variant="secondary" as={ButtonGroup} title="OPTIONS" id="bg-nested-dropdown">
-        <DropdownButton title='Column'>
+      <DropdownButton variant="info" className="button-border-color" eventKey="ROBOT" as={ButtonGroup} title="OPTIONS" id="bg-nested-dropdown">
+        <DropdownButton variant="warning" title='Column'>
           <Dropdown.Item >1</Dropdown.Item>
           <Dropdown.Item >2</Dropdown.Item>
           <Dropdown.Item >3</Dropdown.Item>
@@ -66,7 +61,7 @@ const CommandForm = ({ onCommandSubmit }) => {
           <Dropdown.Item >5</Dropdown.Item> 
         </DropdownButton>
 
-        <DropdownButton title='Row'>
+        <DropdownButton variant="warning" title='Row'>
           <Dropdown.Item >1</Dropdown.Item>
           <Dropdown.Item >2</Dropdown.Item>
           <Dropdown.Item >3</Dropdown.Item>
@@ -85,17 +80,17 @@ const CommandForm = ({ onCommandSubmit }) => {
           >
           </textarea>
           <ButtonGroup>
-      <Button variant="secondary">MOVE</Button>
-      <Button variant="secondary">TURN</Button>
-      <Button variant="secondary">REPORT</Button>
+      <Button variant="info" className="button-border-color">MOVE</Button>
+      <Button variant="info" className="button-border-color">TURN</Button>
+      <Button variant="info" className="button-border-color">REPORT</Button>
 
 
-      <DropdownButton variant="secondary" as={ButtonGroup} title="OPTIONS" id="bg-nested-dropdown">
+      <DropdownButton variant="info"  className="button-border-color" as={ButtonGroup} title="OPTIONS" id="bg-nested-dropdown">
         <Dropdown.Item eventKey="TURN">LEFT</Dropdown.Item>
         <Dropdown.Item eventKey="TURN">RIGHT</Dropdown.Item>
       </DropdownButton>
     </ButtonGroup>
-          <Button variant="secondary" onClick={executeCommand}>Go!</Button>
+          <Button style={{backgroundColor:"chocolate",border:"3px solid brown"}} onClick={executeCommand}>Go!</Button>
           </div>
         </>
     )

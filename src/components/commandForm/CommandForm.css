@@ -2,8 +2,9 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: center;
-    gap: 50px;
+    justify-content:space-around;
+    /* gap: 50px; */
+    
     width: 150px;
     height: 250px;
     align-self: center;
@@ -13,7 +14,19 @@
 
 .button-border-color{
 
-    box-shadow: inset 0 0 0 3px chocolate;
-    border: 3px solid chocolate;
+    box-shadow: inset 0 0 0 3px rgb(255, 114, 138);
+    border: 3px solid rgb(255, 114, 138);
     border-radius: 2px;
+}
+
+.pannel-flex-row{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+#button-go{
+    height: min-content;
+    align-self: center;
+    margin-left: 80%;
 }

@@ -4,72 +4,74 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { ButtonGroup } from "react-bootstrap";
 import '../commandForm/CommandForm.css';
+import DropdownButtons from "../dropdown/DropdownButtons";
+import DropdownFacing from "../dropdown/DropdownFacing";
 
 const CommandForm = ({ onCommandSubmit }) => {
     const [commandToExecute, setCommandToExecute] = useState("");
-
+    const [visibleOptions, setVisibleOptions] = useState("");
+   
+      
     const handleChange = event => {
         setCommandToExecute(event.target.value.toUpperCase());
     
     }
+    const handleOptionClick = (option) => {
+
+      setCommandToExecute((prevCommand) => `${prevCommand}${option}`);
+      
+    };
+  
 
     const executeCommand = () => {
         // Llama a la función proporcionada desde las props cuando se ejecuta el comando
         onCommandSubmit(commandToExecute);
+        setCommandToExecute("");
       };
+
+    const handleDropdownClick = (buttonKey) => {
+      
+          handleOptionClick(buttonKey)
+          // Actualiza el estado para mostrar las opciones asociadas al botón clicado
+          setVisibleOptions(buttonKey);
+
+        };
+
+    const handleSubDropdownClick=(buttonKey) => {
+      handleOptionClick(buttonKey)
+    }
+
+
+       
+
     
       return (
         <>
-        <div className="buttongroup-flex">
+        <div className="pannel-flex-row">
+         <div className="buttongroup-flex">
+      {/* Botones de Robot */}
+      <ButtonGroup>
+        <Button
+          variant="info"
+          className="button-border-color"
+          onClick={() => handleDropdownClick('PLACE_ROBOT ')}
+        >
+          ROBOT
+        </Button>
+        <Button
+          variant="info"
+          className="button-border-color"
+          onClick={() => handleDropdownClick('PLACE_WALL ')}
+        >
+          WALL
+        </Button>
+        {visibleOptions != ""&& (
 
-        <ButtonGroup>
-          <Button variant="info" className="button-border-color">ROBOT</Button>
-          <Button variant="info" className="button-border-color">WALL</Button>
-
-      <DropdownButton variant="info" className="button-border-color" eventKey="ROBOT"as={ButtonGroup} title="OPTIONS" id="bg-nested-dropdown">
-        <DropdownButton variant="warning" title='Column'>
-          <Dropdown.Item >1</Dropdown.Item>
-          <Dropdown.Item >2</Dropdown.Item>
-          <Dropdown.Item >3</Dropdown.Item>
-          <Dropdown.Item >4</Dropdown.Item>
-          <Dropdown.Item >5</Dropdown.Item> 
-        </DropdownButton>
-
-        <DropdownButton variant="warning" title='Row'>
-          <Dropdown.Item >1</Dropdown.Item>
-          <Dropdown.Item >2</Dropdown.Item>
-          <Dropdown.Item >3</Dropdown.Item>
-          <Dropdown.Item >4</Dropdown.Item>
-          <Dropdown.Item >5</Dropdown.Item> 
-        </DropdownButton>
-
-        <DropdownButton variant="warning" title='Facing'>
-          <Dropdown.Item >North</Dropdown.Item>
-          <Dropdown.Item >East</Dropdown.Item>
-          <Dropdown.Item >South</Dropdown.Item>
-          <Dropdown.Item >West</Dropdown.Item>
-        </DropdownButton>
-        
-      </DropdownButton>
-
-      <DropdownButton variant="info" className="button-border-color" eventKey="ROBOT" as={ButtonGroup} title="OPTIONS" id="bg-nested-dropdown">
-        <DropdownButton variant="warning" title='Column'>
-          <Dropdown.Item >1</Dropdown.Item>
-          <Dropdown.Item >2</Dropdown.Item>
-          <Dropdown.Item >3</Dropdown.Item>
-          <Dropdown.Item >4</Dropdown.Item>
-          <Dropdown.Item >5</Dropdown.Item> 
-        </DropdownButton>
-
-        <DropdownButton variant="warning" title='Row'>
-          <Dropdown.Item >1</Dropdown.Item>
-          <Dropdown.Item >2</Dropdown.Item>
-          <Dropdown.Item >3</Dropdown.Item>
-          <Dropdown.Item >4</Dropdown.Item>
-          <Dropdown.Item >5</Dropdown.Item> 
-        </DropdownButton>
-        </DropdownButton>
-    </ButtonGroup>
+          <DropdownButtons visibleOptions={visibleOptions} onOptionClick={handleSubDropdownClick} />
+          
+        ) }
+ 
+      </ButtonGroup>
           <textarea
             id="command"
             cols="30"
@@ -80,19 +82,28 @@ const CommandForm = ({ onCommandSubmit }) => {
           >
           </textarea>
           <ButtonGroup>
-      <Button variant="info" className="button-border-color">MOVE</Button>
-      <Button variant="info" className="button-border-color">TURN</Button>
-      <Button variant="info" className="button-border-color">REPORT</Button>
+      <Button variant="info" className="button-border-color" onClick={() => handleDropdownClick('MOVE')}>MOVE</Button>       
+        <DropdownButton
+          variant="info"
+          className="button-border-color"
+          as={ButtonGroup}
+          title="TURN"
+          id="bg-nested-dropdown"
+        >
 
+              <Dropdown.Item onClick={() => handleDropdownClick('LEFT')} >LEFT</Dropdown.Item>
+              <Dropdown.Divider />
+              <Dropdown.Item onClick={() => handleDropdownClick('RIGHT')}>RIGHT</Dropdown.Item>
+              </DropdownButton>
+              <Button variant="info" className="button-border-color" onClick={() => handleDropdownClick('REPORT')}>REPORT</Button>
 
-      <DropdownButton variant="info"  className="button-border-color" as={ButtonGroup} title="OPTIONS" id="bg-nested-dropdown">
-        <Dropdown.Item eventKey="TURN">LEFT</Dropdown.Item>
-        <Dropdown.Item eventKey="TURN">RIGHT</Dropdown.Item>
-      </DropdownButton>
-    </ButtonGroup>
-          <Button style={{backgroundColor:"chocolate",border:"3px solid brown"}} onClick={executeCommand}>Go!</Button>
+      </ButtonGroup>
           </div>
+            <Button id="button-go" style={{backgroundColor:"chocolate",border:"3px solid brown"}} onClick={executeCommand}>Go!</Button>
+          
+            </div> 
+          
         </>
     )
-}
+  }
 export default CommandForm

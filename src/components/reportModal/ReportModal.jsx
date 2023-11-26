@@ -9,7 +9,7 @@ const ReportModal = ({ text, onHide }) => {
         <Modal.Header closeButton>
           <Modal.Title>Robot Report</Modal.Title>
         </Modal.Header>
-        <Modal.Body data-testid={"report"}>{text}</Modal.Body>
+        <Modal.Body><p data-testid={'final-report'}>{text}</p></Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={onHide}>
             Close

@@ -5,7 +5,7 @@ import Board from './components/board/Board'
 
 
 function App() {
-  
+  console.log(Board);
   
   return(
     <>

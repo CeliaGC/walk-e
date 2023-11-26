@@ -15,11 +15,13 @@ export const UpdateCellState = ({
 }) => {
     const [action, params] = command.split(' ');
 
-    if (command === "MOVE" || command === "LEFT" || command === "RIGHT" || command === "REPORT") {
-        if (command === "REPORT") {
-            robotPosition ? setRobotReport(`${robotPosition.y},${robotPosition.x},${robotPosition.facing}`) : console.log("No robot found");
+    if (command === "REPORT") {
+            if(robotPosition.x != 0 && robotPosition.y != 0){
+            setRobotReport(`${robotPosition.y},${robotPosition.x},${robotPosition.facing}`) 
             setShowModal(true);
-        } else {
+            } 
+        } else if (command === "MOVE" || command === "LEFT" || command === "RIGHT") {
+
             const arrayOfWalls = arrayOfCells.filter((c) => c.className === "PLACE_WALL");
             if (robotPosition.facing === 'NORTH') {
 
@@ -116,9 +118,8 @@ export const UpdateCellState = ({
                         setRobotPosition({ x: robotPosition.x, y: robotPosition.y, facing: "NORTH" })
                 }
             }
-        }
 
-    } else {
+            }else {
         const [y, x, facing] = params.split(',');
         const parsedX = Number(x);
         const parsedY = Number(y);

@@ -3,7 +3,7 @@ import CommandForm from "../commandForm/commandForm";
 import Cell from "../cell/Cell";
 import "../board/Board.css";
 import ReportModal from '../reportModal/ReportModal';
-import { UpdateCellState } from "../../logic/updateCellState";
+import { UpdateCellState } from "../../logic/UpdateCellState";
 
 const Board = () => {
   const [robotPosition, setRobotPosition] = useState({ x: 0, y: 0, facing: "" });
@@ -38,6 +38,7 @@ const Board = () => {
         } else {
           cell.className = 'plain-cell'
         }
+        return cell;
       });
 
       return newArray;

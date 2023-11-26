@@ -5,11 +5,11 @@ import Modal from 'react-bootstrap/Modal';
 const ReportModal = ({ text, onHide }) => {
   return (
     <>
-      <Modal show={true} onHide={onHide}>
+      <Modal show={true} onHide={onHide} container={() => document.getElementById('board')}>
         <Modal.Header closeButton>
           <Modal.Title>Robot Report</Modal.Title>
         </Modal.Header>
-        <Modal.Body>{text}</Modal.Body>
+        <Modal.Body data-testid={"report"}>{text}</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={onHide}>
             Close

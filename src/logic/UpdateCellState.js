@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-export const updateCellState = ({
+export const UpdateCellState = ({
     command,
     robotPosition,
     wallPosition,

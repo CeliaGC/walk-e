@@ -1,11 +1,9 @@
-// Board.js
-
 import React, { useEffect, useState, useCallback } from "react";
 import CommandForm from "../commandForm/commandForm";
 import Cell from "../cell/Cell";
 import "../board/Board.css";
 import ReportModal from '../reportModal/ReportModal';
-import { updateCellState } from "../../logic/gameLogic";
+import { UpdateCellState } from "../../logic/updateCellState";
 
 const Board = () => {
   const [robotPosition, setRobotPosition] = useState({ x: 0, y: 0, facing: "" });
@@ -19,64 +17,50 @@ const Board = () => {
       className: "plain-cell",
     }))
   );
-  // const [newBoard, setNewBoard] = useState([]);
 
   useEffect(() => {
-    // locateCell();
+
 
     setArrayOfCells((prevArray) => {
       const newArray = [...prevArray];
 
       newArray.forEach((cell) => {
         if (cell.id === cellId) {
-          if(cellId === (5 - wallPosition.y) * 5 + wallPosition.x && wallPosition.x != 0 && cell.className === "plain-cell"){
+          if (cellId === (5 - wallPosition.y) * 5 + wallPosition.x && wallPosition.x != 0 && cell.className === "plain-cell") {
             cell.className = "PLACE_WALL"
-          }else if(cell.id != ((5 - wallPosition.y) * 5 + wallPosition.x) && cell.className === robotPosition.facing){
+          } else if (cell.id != ((5 - wallPosition.y) * 5 + wallPosition.x) && cell.className === robotPosition.facing) {
             cell.className = cell.className
-          }else if(cellId=== (5 - robotPosition.y) * 5 + robotPosition.x && cell.className !='PLACE_WALL'){
+          } else if (cellId === (5 - robotPosition.y) * 5 + robotPosition.x && cell.className != 'PLACE_WALL') {
             cell.className = 'ROBOT-' + robotPosition.facing;
           }
-        } else if(cell.id === (5 - robotPosition.y) * 5 + robotPosition.x || cell.className === "PLACE_WALL"){
+        } else if (cell.id === (5 - robotPosition.y) * 5 + robotPosition.x || cell.className === "PLACE_WALL") {
           cell.className = cell.className
-        } else{
+        } else {
           cell.className = 'plain-cell'
         }
       });
 
       return newArray;
-    });
+    });}, [robotPosition, cellId, wallPosition]);
 
+
+    const handleCommandSubmit = useCallback((command) => {
+      UpdateCellState({
+        command,
+        robotPosition,
+        wallPosition,
+        cellId,
+        robotReport,
+        setRobotReport,
+        setRobotPosition,
+        setCellId,
+        setShowModal,
+        arrayOfCells,
+        setArrayOfCells,
+        setWallPosition,
+      });
+    }, [robotPosition, wallPosition, cellId, robotReport, setRobotReport, setRobotPosition, setCellId, setShowModal, arrayOfCells, setArrayOfCells, setWallPosition]);
     
-  }, [robotPosition, cellId, wallPosition]);
-
-
-  const handleCommandSubmit = useCallback((command) => {
-    updateCellState({
-      command,
-      robotPosition,
-      wallPosition,
-      cellId,
-      robotReport,
-      setRobotReport,
-      setRobotPosition,
-      setCellId,
-      setShowModal,
-      arrayOfCells,
-      setArrayOfCells,
-      setWallPosition,
-    });
-});
-   ([robotPosition,
-    wallPosition,
-    cellId,
-    robotReport,
-    setRobotReport,
-    setRobotPosition,
-    setCellId,
-    setShowModal,
-    arrayOfCells,
-    setArrayOfCells,
-    setWallPosition,]);
 
   const handleCloseModal = () => {
     setShowModal(false);
@@ -91,7 +75,7 @@ const Board = () => {
         {renderCells()}
       </div>
       <CommandForm onCommandSubmit={handleCommandSubmit} />
-      {showModal && <ReportModal onHide={handleCloseModal} text={robotReport} />}
+      {showModal && <ReportModal data-testid={'final-report'} onHide={handleCloseModal} text={robotReport} />}
     </>
   );
 };

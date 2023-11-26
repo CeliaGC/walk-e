@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { ButtonGroup } from "react-bootstrap";
-import '../commandForm/CommandForm.css';
+import "../commandForm/commandForm.css"
 import DropdownButtons from "../dropdown/DropdownButtons";
 import DropdownFacing from "../dropdown/DropdownFacing";
 
@@ -73,6 +73,7 @@ const CommandForm = ({ onCommandSubmit }) => {
  
       </ButtonGroup>
           <textarea
+            data-testid={"command"}
             id="command"
             cols="30"
             rows="1"
@@ -99,7 +100,7 @@ const CommandForm = ({ onCommandSubmit }) => {
 
       </ButtonGroup>
           </div>
-            <Button id="button-go" style={{backgroundColor:"chocolate",border:"3px solid brown"}} onClick={executeCommand}>Go!</Button>
+            <Button data-testid={"submit"} id="button-go" style={{backgroundColor:"chocolate",border:"3px solid brown"}} onClick={executeCommand}>Go!</Button>
           
             </div> 
           

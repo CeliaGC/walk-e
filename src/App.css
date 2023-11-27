@@ -12,6 +12,9 @@
   background-color: rgb(255, 255, 167);
   background-image: url(./assets/images/texture.png);
   background-size: 30%;
+  border: 40px solid rgb(255, 217, 1);
+  border-radius: 20px;
+   box-shadow: inset 0px 0px 12px 6px rgb(255, 143, 143);
  
   
 }

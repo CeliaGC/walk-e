@@ -80,7 +80,7 @@ jest.mock('../../App.jsx', () => ({
   App: jest.fn(),
 }));
 
-test('simula la secuencia de comandos y muestra el informe correcto', async () => {
+test('simulates command lines and shows correct report', async () => {
   render(<Board />);
 
   const textareaElement = screen.getByTestId('command');
@@ -121,22 +121,12 @@ test('simula la secuencia de comandos y muestra el informe correcto', async () =
     await new Promise(resolve => setTimeout(resolve, 10));
   });
 
-
-  // expect(UpdateCellState).toHaveBeenCalledTimes(9);
   expect(screen.getByTestId('final-report').textContent).toBe('1,1,EAST');
 
 
   });
 
-  
-  // await act(async () => {
-  //   fireEvent.change(textareaElement, { target: { value: 'REPORT' } });
-  //   fireEvent.click(screen.getByTestId('submit'));
-    // await new Promise(resolve => setTimeout(resolve, 5));
-  // });
 
-
-  // expect(screen.getByTestId('final-report')).toBeInTheDocument();
 
 
 

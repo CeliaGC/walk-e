@@ -68,7 +68,7 @@ const Board = () => {
   };
 
   const renderCells = () =>
-    arrayOfCells.map((cell) => <Cell key={cell.id} id={cell.id} className={cell.className} y />);
+    arrayOfCells.map((cell) => <Cell key={cell.id} id={cell.id} className={cell.className}/>);
 
   return (
     <>
@@ -76,7 +76,7 @@ const Board = () => {
         {renderCells()}
       </div>
       <CommandForm onCommandSubmit={handleCommandSubmit} />
-      {showModal && <ReportModal data-testid={'final-report'} onHide={handleCloseModal} text={robotReport} />}
+      {showModal && <ReportModal onHide={handleCloseModal} text={robotReport} />}
     </>
   );
 };

@@ -1,0 +1,9 @@
+.instructions-float{
+    position:absolute;
+    max-height:inherit;
+    max-width: 30%;
+}
+
+.instructions-margin{
+    margin-bottom: 5px;
+}

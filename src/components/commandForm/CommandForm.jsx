@@ -5,7 +5,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import { ButtonGroup } from "react-bootstrap";
 import "../commandForm/commandForm.css"
 import DropdownButtons from "../dropdown/DropdownButtons";
-import DropdownFacing from "../dropdown/DropdownFacing";
+import { Instructions } from "../instructions/instructions";
 
 const CommandForm = ({ onCommandSubmit }) => {
     const [commandToExecute, setCommandToExecute] = useState("");
@@ -48,8 +48,10 @@ const CommandForm = ({ onCommandSubmit }) => {
       return (
         <>
         <div className="pannel-flex-row">
+          <Instructions/>
          <div className="buttongroup-flex">
       {/* Botones de Robot */}
+      
       <ButtonGroup>
         <Button
           variant="info"

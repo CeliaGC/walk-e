@@ -1,33 +1,39 @@
-.buttongroup-flex{
+.buttongroup-flex {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content:space-around;
+    justify-content: space-around;
     width: 150px;
     height: 250px;
     align-self: center;
     flex-wrap: wrap;
-    
+
 }
 
-.button-border-color{
+.button-border-color {
 
     box-shadow: inset 0 0 0 3px rgb(255, 114, 138);
     border: 3px solid rgb(255, 114, 138);
     border-radius: 2px;
 }
 
-.pannel-flex-row{
+.pannel-flex-row {
     display: flex;
     flex-direction: row;
     padding-top: 5%;
     padding-right: 5%;
 
-    
+
 }
 
-#button-go{
+#button-go {
     height: min-content;
     align-self: center;
     margin-left: 80%;
+}
+
+textarea {
+    max-height: 30px;
+    max-width: 230px;
+    resize: none;
 }

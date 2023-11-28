@@ -126,7 +126,17 @@ export const UpdateCellState = ({
         if (parsedX <= 5 && parsedY <= 5) {
             switch (action) {
                 case 'PLACE_ROBOT':
-                    if (facing === "NORTH" || facing === "EAST" || facing === "SOUTH" || facing === "WEST") {
+                    const arrayOfWalls = arrayOfCells.filter((c) => c.className === "PLACE_WALL");
+                    let nextCell = (5 - parsedY) * 5 + parsedX;
+                    let blockingCell = arrayOfWalls.find((w) => w.id === nextCell);
+                    
+                    if (blockingCell){
+                        setRobotPosition({
+                            x: robotPosition.x,
+                            y: robotPosition.y,
+                            facing: robotPosition.facing
+                        })
+                    } else if(facing === "NORTH" || facing === "EAST" || facing === "SOUTH" || facing === "WEST") {
                         setRobotPosition({
                             x: parsedX,
                             y: parsedY,

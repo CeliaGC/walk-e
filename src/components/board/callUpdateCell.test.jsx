@@ -38,7 +38,7 @@ jest.mock('../../logic/UpdateCellState', () => ({
         }
     }),
 }));
-test('simulates command lines and shows correct report', async () => {
+test('each sumit calls updateCellState', async () => {
     render(<Board />);
 
     const textareaElement = screen.getByTestId('command');

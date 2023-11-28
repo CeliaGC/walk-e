@@ -1,8 +1,7 @@
 import { render, fireEvent, screen, act } from '@testing-library/react';
 import Board from './Board.jsx';
 import '@testing-library/jest-dom';
-import App from '../../App.jsx';
-import { UpdateCellState } from '../../logic/UpdateCellState.js';
+
 
 jest.mock('../../logic/UpdateCellState', () => ({
   __esModule: true,
@@ -125,6 +124,8 @@ test('simulates command lines and shows correct report', async () => {
 
 
   });
+
+  
 
 
 

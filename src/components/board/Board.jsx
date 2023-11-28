@@ -11,12 +11,21 @@ const Board = () => {
   const [cellId, setCellId] = useState(0);
   const [robotReport, setRobotReport] = useState("");
   const [showModal, setShowModal] = useState(false);
-  const [arrayOfCells, setArrayOfCells] = useState(
-    Array.from({ length: 25 }, (_, index) => ({
+  const createInitialCells = () => {
+    const cells = Array.from({ length: 25 }, (_, index) => ({
       id: index + 1,
       className: "plain-cell",
-    }))
-  );
+      text: "" // Agrega una propiedad 'text'
+    }));
+  
+    // Asigna texto específico a las celdas con id 5 y 20
+    cells[4].text = "5,5";
+    cells[20].text = "1,1";
+  
+    return cells;
+  };
+  const [arrayOfCells, setArrayOfCells] = useState(createInitialCells);
+ 
 
   useEffect(() => {
 
@@ -42,6 +51,7 @@ const Board = () => {
       });
 
       return newArray;
+      
     });}, [robotPosition, cellId, wallPosition]);
 
 
@@ -60,6 +70,19 @@ const Board = () => {
         setArrayOfCells,
         setWallPosition,
       });
+      // setArrayOfCells((prevArray) => {
+      //   const newArray = [...prevArray];
+    
+      //   newArray.forEach((cell) => {
+      //     if (cell.id === 21) {
+      //       cell.text = "1,1";
+      //     } else if (cell.id === 5) {
+      //       cell.text = "5,5";
+      //     }
+      //   });
+    
+      //   return newArray;
+      // });
     }, [robotPosition, wallPosition, cellId, robotReport, setRobotReport, setRobotPosition, setCellId, setShowModal, arrayOfCells, setArrayOfCells, setWallPosition]);
     
 
@@ -67,8 +90,11 @@ const Board = () => {
     setShowModal(false);
   };
 
-  const renderCells = () =>
-    arrayOfCells.map((cell) => <Cell key={cell.id} id={cell.id} className={cell.className}/>);
+  const renderCells = () => arrayOfCells.map((cell) => <Cell key={cell.id} id={cell.id} className={cell.className} text={cell.text}/>);
+  
+    
+  
+
 
   return (
     <>

@@ -46,7 +46,7 @@ jest.mock('../../App.jsx', () => ({
   App: jest.fn(),
 }));
 
-test('handlecommandSubmit calls function with parameters', async () => {
+test('sumbit calls updateCellState with parameters', async () => {
   render(<Board/>);
 
   const textareaElement = screen.getByTestId('command');
@@ -65,102 +65,127 @@ test('handlecommandSubmit calls function with parameters', async () => {
          {
            "className": "plain-cell",
            "id": 1,
+           "text": ""
          },
         {
            "className": "plain-cell",
            "id": 2,
+           "text": ""
          },
         {
            "className": "plain-cell",
            "id": 3,
+           "text": ""
          },
          {
            "className": "plain-cell",
            "id": 4,
+           "text": ""
          },
          {
            "className": "plain-cell",
            "id": 5,
+           "text": "5,5"
          },
          {
            "className": "plain-cell",
            "id": 6,
+           "text": ""
          },
          {
            "className": "plain-cell",
            "id": 7,
+           "text": ""
          },
          {
            "className": "plain-cell",
            "id": 8,
+           "text": ""
          },
          {
            "className": "plain-cell",
            "id": 9,
+           "text": ""
          },
          {
            "className": "plain-cell",
            "id": 10,
+           "text": ""
          },
          {
            "className": "plain-cell",
            "id": 11,
+           "text": ""
          },
          {
            "className": "plain-cell",
            "id": 12,
+           "text": ""
          },
          {
            "className": "plain-cell",
            "id": 13,
+           "text": ""
          },
           {
            "className": "plain-cell",
            "id": 14,
+           "text": ""
          },
          {
            "className": "plain-cell",
            "id": 15,
+           "text": ""
          },
          {
            "className": "plain-cell",
            "id": 16,
+           "text": ""
          },
          {
            "className": "plain-cell",
            "id": 17,
+           "text": ""
          },
          {
            "className": "plain-cell",
            "id": 18,
+           "text": ""
          },
          {
            "className": "plain-cell",
            "id": 19,
+           "text": ""
          },
          {
            "className": "plain-cell",
            "id": 20,
+           "text": ""
          },
          {
            "className": "plain-cell",
            "id": 21,
+           "text": "1,1",
          },
          {
            "className": "plain-cell",
            "id": 22,
+           "text": ""
          },
          {
            "className": "plain-cell",
            "id": 23,
+           "text": ""
          },
          {
            "className": "ROBOT-NORTH",
            "id": 24,
+           "text": ""
          },
          {
            "className": "plain-cell",
            "id": 25,
+           "text": ""
          }
        ],
     robotPosition: { x: 0, y: 0, facing: '' }, 

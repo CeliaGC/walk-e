@@ -1,3 +1,6 @@
+div{
+    position:relative
+}
 .plain-cell{
     height: 105px;
     width: 105px;
@@ -35,8 +38,14 @@
 
 .PLACE_WALL{
     background-image: url(../../assets/images/wall.png);
-    background-size:110%;
+    background-size:120%;
     background-position: center;
-    transform:rotate(95deg);
+    /* transform:rotate(95deg); */
     background-repeat: no-repeat;
+}
+
+.cell-coordenates{
+    color: white;
+    font-family: 'pangolin';
+    padding-left: 5%;
 }

@@ -9,15 +9,11 @@ This is a web application that recreates a simple robot. Using a command line in
 The design is conceived for a smooth and intuitive user experience, with an kids-friendly interface that provides a game board, a pannel to build commands and a button for explicit instructions. This makes the app conceivable as a real digital toy for kids, so they can learn about coordenates by playing with funny elements.
 
 <h3>Desktop Views</h3>
- 
+
+![Group%202.png](https://github.com/CeliaGC/walk-e/blob/main/src/assets/images/readme_images/Walk-e_app3.png)
 ![Group%202.png](https://github.com/CeliaGC/walk-e/blob/main/src/assets/images/readme_images/Walk-e_app1.png)
 ![Group%202.png](https://github.com/CeliaGC/walk-e/blob/main/src/assets/images/readme_images/Walk-e_app2.png)
-![Group%202.png](https://github.com/CeliaGC/walk-e/blob/main/src/assets/images/readme_images/Walk-e_app3.png)
 
-
-<h3>Responsive Views</h3>
-
-![Group%201.png](https://github.com/MyFaveImagesProject/MyFaveImgFront/blob/main/src/assets/images/Group%201.png)
  
 
 <h2>Development</h2>
@@ -74,9 +70,18 @@ To build commands, there is the possibility of typing it directly in the textare
 
 Coordenates begin at bottom left cell with 1,1 and upper right cell with 5,5. 1,2 would be the second bottom cell from left, 2,1 would be the first cell in the row above, etc.
 
+<h2>Next Steps</h2>
+
+-Add responsive views.
+-Add sound effects "Weeeee" for moves and "Uh-oh" for failed moves due to Chocochunks.
+-Add alert messages for wrong commands, using Sweet Alert library.
+-Refactor code to make logic simplier.
+-Increase test coverage.
+
+
 <h2>Developer</h2>
 
 Celia Garcia Castilla https://github.com/CeliaGC/Celia_Garcia
 
-I wish you a happy user experience
+I wish you a happy user experience as I had the best, a "chunktastic" developer experience while bringing to life this cutie pie Walk-e and his Chocochunks.
 

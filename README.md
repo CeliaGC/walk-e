@@ -73,9 +73,13 @@ Coordenates begin at bottom left cell with 1,1 and upper right cell with 5,5. 1,
 <h2>Next Steps</h2>
 
 -Add responsive views.
+
 -Add sound effects "Weeeee" for moves and "Uh-oh" for failed moves due to Chocochunks.
+
 -Add alert messages for wrong commands, using Sweet Alert library.
+
 -Refactor code to make logic simplier.
+
 -Increase test coverage.
 
 

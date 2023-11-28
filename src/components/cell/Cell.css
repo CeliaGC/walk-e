@@ -1,6 +1,3 @@
-div{
-    position:relative
-}
 .plain-cell{
     height: 105px;
     width: 105px;
@@ -47,5 +44,6 @@ div{
 .cell-coordenates{
     color: white;
     font-family: 'pangolin';
+    font-weight:bold ;
     padding-left: 5%;
 }

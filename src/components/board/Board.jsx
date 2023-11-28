@@ -4,6 +4,7 @@ import Cell from "../cell/Cell";
 import "../board/Board.css";
 import ReportModal from '../reportModal/ReportModal';
 import { UpdateCellState } from "../../logic/UpdateCellState";
+import { Title } from "../title/Title";
 
 const Board = () => {
   const [robotPosition, setRobotPosition] = useState({ x: 0, y: 0, facing: "" });
@@ -69,21 +70,17 @@ const Board = () => {
         arrayOfCells,
         setArrayOfCells,
         setWallPosition,
-      });
-      // setArrayOfCells((prevArray) => {
-      //   const newArray = [...prevArray];
-    
-      //   newArray.forEach((cell) => {
-      //     if (cell.id === 21) {
-      //       cell.text = "1,1";
-      //     } else if (cell.id === 5) {
-      //       cell.text = "5,5";
-      //     }
-      //   });
-    
-      //   return newArray;
-      // });
-    }, [robotPosition, wallPosition, cellId, robotReport, setRobotReport, setRobotPosition, setCellId, setShowModal, arrayOfCells, setArrayOfCells, setWallPosition]);
+      });}, [robotPosition,
+             wallPosition, 
+             cellId, 
+             robotReport, 
+             setRobotReport, 
+             setRobotPosition, 
+             setCellId, 
+             setShowModal, 
+             arrayOfCells, 
+             setArrayOfCells, 
+             setWallPosition]);
     
 
   const handleCloseModal = () => {
@@ -103,6 +100,7 @@ const Board = () => {
       </div>
       <CommandForm onCommandSubmit={handleCommandSubmit} />
       {showModal && <ReportModal onHide={handleCloseModal} text={robotReport} />}
+      <Title/>
     </>
   );
 };

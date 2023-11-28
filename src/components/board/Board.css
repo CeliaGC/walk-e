@@ -4,8 +4,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-    /* border: 1px solid black; */
-    /* background-color:; */
     background: linear-gradient(to bottom right, rgb(107, 198, 255),rgb(255, 114, 138));
-    margin-right: 10%;
+    margin-right: 5%;
+    /* padding-left: 10%; */
 }

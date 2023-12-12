@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
-import CommandForm from "../commandForm/commandForm";
+import CommandForm from "../commandForm/CommandForm";
 import Cell from "../cell/Cell";
 import "../board/Board.css";
 import ReportModal from '../reportModal/ReportModal';

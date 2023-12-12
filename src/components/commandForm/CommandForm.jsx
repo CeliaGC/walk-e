@@ -5,7 +5,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import { ButtonGroup } from "react-bootstrap";
 import "../commandForm/commandForm.css"
 import DropdownButtons from "../dropdown/DropdownButtons";
-import { Instructions } from "../instructions/instructions";
+import { Instructions } from "../instructions/Instructions";
 
 const CommandForm = ({ onCommandSubmit }) => {
     const [commandToExecute, setCommandToExecute] = useState("");

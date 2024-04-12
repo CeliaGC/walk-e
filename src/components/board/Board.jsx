@@ -12,6 +12,7 @@ const Board = () => {
   const [cellId, setCellId] = useState(0);
   const [robotReport, setRobotReport] = useState("");
   const [showModal, setShowModal] = useState(false);
+  
   const createInitialCells = () => {
     const cells = Array.from({ length: 25 }, (_, index) => ({
       id: index + 1,
